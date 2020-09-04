@@ -7,17 +7,17 @@
 4) Po kliknięciu na każdy link w menu zrób następujące czynności:
     - zatrzymaj domyślną akcję
     - wszystkim LI poza tym w którym znajduje się kliknięty link dodaj klasę `.collased`
-    - rodzicowi klikniętego linka (LI) dodaj klasę `.expand`
-    - rodzicowi klikniętego linka dodaj event "transitionend", w którym podepniesz funkcję przez nazwę (nie anonimową). Funkcja ta może się dla przykładu nazywać expandElementTransitionEnd.
+    - rodzicowi klikniętego linka (LI) dodaj klasę `.expand` (nie powinien mieć klasy `.collapsed`)
+    - rodzicowi klikniętego linka dodaj event "transitionend", w którym podepniesz funkcję przez nazwę (nie anonimową). Funkcja ta może się dla przykładu nazywać elementTransitionEnd.
 
     W funkcji tej:
-    - usuń event transitionend który właśnie dodałeś
+    - usuń zdarzenie "transitionend" który właśnie dodałeś http://kursjs.pl/kurs/events/events.php#addEventListener
     - wypisz w konsoli href linka w tym LI (alternatywnie użyj `location.href = pobranyHref`)
-5) Dodatkowe dla chętnych:
-    W powyższej funkcji którą podpiąłeś pod zdarzenie transitionend:
-    - stwórz dodatkowo nowy element który jest buttononem z klasą `.close` i tekstem Zamknij
+
+5) Dla chętnych:
+    W powyższej funkcji:
+    - stwórz dodatkowo nowy element który jest buttononem z klasą `.close` i tekstem "Zamknij"
     - element ten dodaj do tego LI
 
-    Po kliknięciu na `.close` rodzicowi usuń klasę `.expand`
-    Wszystkim LI usuń klasę `.collapsed`
+    Po kliknięciu na przycisk `.close` wszystkim LI usuń klasę `.expand` oraz klasę `.collapsed`
     Usuń kliknięty przycisk `.close`
