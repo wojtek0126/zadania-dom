@@ -93,3 +93,7 @@ body {
 .car-detail-elem:nth-of-type(4n-1) {
     background: #efefef;
 }
+
+/*.show {*/
+/*    display: block;*/
+/*}*/
