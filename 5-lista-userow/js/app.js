@@ -1,4 +1,14 @@
-function newElement(tag, attributes) {
+//document.querySelector shortcut
+const getElement = (attrValue) => {
+    return document.querySelector(attrValue);
+}
+
+const $form = getElement('.form');
+const $userList = getElement('.user-list');
+const $nameField = getElement('#name');
+const $phoneField = getElement('#phone');
+
+const newElement = (tag, attributes) => {
     const element = document.createElement(tag);
     for (attr in attributes) {
         element.setAttribute(attr, attributes[attr]);
@@ -6,32 +16,17 @@ function newElement(tag, attributes) {
     return element;
 }
 
-function deleteAddedUser(button, childToTrash) {
-    button.addEventListener('click', function () {
-        childToTrash.parentElement.removeChild(childToTrash);
+const deleteUserEnabled = (userList, classOfDeleteButton) => {
+    userList.addEventListener('click', function (e) {
+        const target = e.target
+        if (target.className == classOfDeleteButton ) {
+            const li = target.parentElement;
+            userList.removeChild(li);
+        }
     })
 }
 
-function deleteUsersOnButton(buttons, childrenToDelete) {
-    buttons.forEach(function (e) {
-        let i = 0;
-        e.addEventListener('click', function () {
-            childrenToDelete[i].parentElement.removeChild(childrenToDelete[i]);
-            if (childrenToDelete[i].parentElement === null){
-                i++;
-            }
-        })
-    })
-}
-
-const $form = document.querySelector('.form');
-const $userList = document.querySelector('.user-list');
-const $users = document.querySelectorAll('.user');
-const $nameField = document.querySelector('#name');
-const $phoneField = document.querySelector('#phone');
-const $deleteUserButtons = document.querySelectorAll('.user-delete');
-
-function AddingUserEnabled() {
+const AddingUserEnabled = () => {
     $form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -47,10 +42,11 @@ const deleteUserButton = newElement('button', {class: 'btn user-delete'});
         newUserDetails.appendChild(newUserName);
         newUserDetails.appendChild(newUserPhone);
         newUserField.appendChild(deleteUserButton);
-        deleteAddedUser(deleteUserButton, newUserField);
     })
 }
 
 AddingUserEnabled();
-deleteUsersOnButton($deleteUserButtons, $users);
+deleteUserEnabled($userList, 'btn user-delete');
+
+
 
